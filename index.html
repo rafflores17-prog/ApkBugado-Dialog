@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>ApkBugado</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 <style>
 body {
     margin: 0;
     background: #000;
-    font-family: Arial;
+    font-family: 'Orbitron', monospace;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,57 +16,87 @@ body {
 }
 
 .box {
-    background: #0a0a0a;
+    background: linear-gradient(145deg, #0a0a0a, #111);
     border: 2px solid #00ff00;
-    border-radius: 15px;
-    padding: 25px;
+    border-radius: 20px;
+    padding: 30px;
     width: 90%;
-    max-width: 350px;
+    max-width: 360px;
     text-align: center;
-    box-shadow: 0 0 20px #00ff00;
+    box-shadow: 0 0 30px #00ff00;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.box:hover {
+    transform: scale(1.02);
 }
 
 h2 {
     color: #00ff00;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 24px;
 }
 
 p {
     color: #00ff00;
-    font-size: 14px;
+    font-size: 15px;
+    margin-bottom: 20px;
 }
 
 button {
-    margin-top: 15px;
-    padding: 12px;
+    margin-top: 12px;
+    padding: 14px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 12px;
     border: none;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button:hover {
+    opacity: 0.85;
+    transform: scale(1.02);
 }
 
 .telegram {
     background: #00ff00;
-    color: black;
+    color: #000;
 }
 
 .vip {
-    background: red;
-    color: white;
+    background: #ff0000;
+    color: #fff;
 }
 
 .fechar {
-    background: black;
+    background: #000;
     color: #00ff00;
     border: 1px solid #00ff00;
+}
+
+@media (max-width: 350px) {
+    .box {
+        padding: 20px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 13px;
+    }
+    button {
+        font-size: 13px;
+        padding: 12px;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="box" id="dialogBox">
     <h2>ApkBugado</h2>
 
     <p>
@@ -74,7 +104,7 @@ button {
     </p>
 
     <button class="telegram" onclick="abrirTelegram()">Canal Telegram</button>
-    <button class="vip" onclick="abrirVip()">GRUPO VIP</button>
+    <button class="vip" onclick="abrirVip()">PAINEL VIP</button>
     <button class="fechar" onclick="fechar()">Fechar</button>
 </div>
 
@@ -88,7 +118,11 @@ function abrirVip() {
 }
 
 function fechar() {
-    document.body.innerHTML = "";
+    const box = document.getElementById('dialogBox');
+    box.style.opacity = '0';
+    setTimeout(() => {
+        box.style.display = 'none';
+    }, 300);
 }
 </script>
 
