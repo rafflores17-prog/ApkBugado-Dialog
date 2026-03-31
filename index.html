@@ -8,14 +8,14 @@
 <style>
     body {
         margin: 0;
-        /* CORREÇÃO: Fundo transparente para não criar o rastro cinza quadrado */
-        background: transparent; 
+        background: transparent; /* Remove o rastro cinza quadrado */
         font-family: 'Montserrat', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        /* CORREÇÃO: Removi o height: 100vh que cortava o layout em telas deitadas */
-        padding: 15px;
+        /* CORREÇÃO: Padding maior para o botão "FECHAR" não ser cortado pela borda do Android */
+        padding: 25px 15px; 
+        box-sizing: border-box;
         overflow: hidden;
     }
 
@@ -23,135 +23,103 @@
         background-color: #0f0f1b;
         border: 2px solid #6a00ff;
         border-radius: 20px;
-        width: 100%; /* CORREÇÃO: Usa a largura total permitida pelo Smali */
-        max-width: 330px;
+        width: 100%;
+        max-width: 320px;
         padding: 20px;
-        box-sizing: border-box; /* CORREÇÃO: Impede que o padding "coma" o tamanho */
-        box-shadow: 0 0 30px rgba(106, 0, 255, 0.4);
-        transition: opacity 0.3s ease;
+        box-sizing: border-box;
+        box-shadow: 0 0 25px rgba(106, 0, 255, 0.4);
+        text-align: center;
     }
 
     .header-banner {
         background: linear-gradient(135deg, #6a00ff, #00d4ff);
         border-radius: 15px;
-        padding: 15px;
-        text-align: center;
+        padding: 12px;
         color: #fff;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        margin-bottom: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 
     .header-banner h1 {
         margin: 0;
-        font-size: 20px; /* Reduzi um pouco para não quebrar em telas pequenas */
-        letter-spacing: 1px;
+        font-size: 18px;
         text-transform: uppercase;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-
-    .header-banner p {
-        margin: 5px 0 0 0;
-        font-size: 10px;
-        font-weight: 400;
-        opacity: 0.9;
-        letter-spacing: 2px;
     }
 
     .message-box {
         background-color: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(0, 212, 255, 0.3);
+        border: 1px solid rgba(0, 212, 255, 0.2);
         border-radius: 12px;
-        padding: 15px;
-        text-align: center;
+        padding: 12px;
         color: #e0e0e0;
-        font-size: 13px;
-        margin-bottom: 20px;
+        font-size: 12px;
+        margin-bottom: 15px;
         line-height: 1.5;
     }
 
     .button-stack {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
     }
 
     .btn {
         font-family: 'Montserrat', sans-serif;
         border: none;
-        padding: 14px;
+        padding: 12px;
         border-radius: 10px;
         font-weight: 800;
         font-size: 13px;
         cursor: pointer;
         text-transform: uppercase;
-        transition: all 0.1s;
         width: 100%;
         box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
+        text-decoration: none;
+        display: block;
     }
 
-    /* Botões 3D mantidos conforme seu gosto */
-    .btn-telegram {
-        background-color: #00d4ff;
-        color: #000;
-        box-shadow: 0 5px 0 #008eb3;
-    }
-    .btn-telegram:active {
-        transform: translateY(4px);
-        box-shadow: 0 1px 0 #008eb3;
-    }
+    .btn-telegram { background-color: #00d4ff; color: #000; box-shadow: 0 4px 0 #008eb3; }
+    .btn-vip { background-color: #6a00ff; color: #fff; box-shadow: 0 4px 0 #4500a6; }
 
-    .btn-vip {
-        background-color: #6a00ff;
-        color: #fff;
-        box-shadow: 0 5px 0 #4500a6;
-    }
-    .btn-vip:active {
-        transform: translateY(4px);
-        box-shadow: 0 1px 0 #4500a6;
-    }
-
+    /* CORREÇÃO: Estilo do botão fechar para ser visível e funcional */
     .btn-fechar {
         background-color: #1a1a2e;
-        color: #00d4ff;
-        border: 1px solid #00d4ff;
-        box-shadow: 0 5px 0 #000;
+        color: #ff3b3b; /* Vermelho para destaque */
+        border: 1px solid #ff3b3b;
         margin-top: 5px;
+        font-size: 11px;
     }
-    .btn-fechar:active {
-        transform: translateY(4px);
-        box-shadow: 0 1px 0 #000;
-    }
-
 </style>
 </head>
 <body>
 
-<div class="dialog-container" id="dialogBox">
+<div class="dialog-container" id="mainBox">
     <div class="header-banner">
         <h1>APKBUGADO</h1>
-        <p>A ELITE DOS MODS</p>
+        <p style="margin:0; font-size:9px; opacity:0.8;">A ELITE DOS MODS</p>
     </div>
 
     <div class="message-box">
-        Nos visite para mais aplicativos mod e acessos premium atualizados regularmente. Junte-se ao nosso canal no Telegram.
+        Visite nosso canal para mods e acessos premium atualizados.
     </div>
 
     <div class="button-stack">
-        <button class="btn btn-telegram" onclick="window.location.href='https://t.me/ApkBugado'">GRUPO TELEGRAM</button>
-        <button class="btn btn-vip" onclick="window.location.href='https://painel-vip-nine.vercel.app/'">PAINEL VIP</button>
-        <button class="btn btn-fechar" onclick="fecharDialog()">FECHAR</button>
+        <a href="https://t.me/ApkBugado" class="btn btn-telegram">GRUPO TELEGRAM</a>
+        <a href="https://painel-vip-nine.vercel.app/" class="btn btn-vip">PAINEL VIP</a>
+        
+        <button class="btn btn-fechar" onclick="fecharAcao()">FECHAR</button>
     </div>
 </div>
 
 <script>
-    function fecharDialog() {
-        const box = document.getElementById('dialogBox');
-        box.style.opacity = '0';
-        // CORREÇÃO: Esconde o body para limpar a tela na WebView
-        setTimeout(() => {
-            document.body.style.display = 'none';
-        }, 200);
+    function fecharAcao() {
+        // CORREÇÃO: Substitui o conteúdo por uma mensagem de instrução
+        document.body.innerHTML = `
+            <div style="color:white; text-align:center; padding:20px; border:1px dashed #444; border-radius:15px;">
+                <b style="color:#00d4ff">AVISO FECHADO</b><br>
+                <small>Toque em qualquer lugar fora para sair</small>
+            </div>
+        `;
     }
 </script>
 
