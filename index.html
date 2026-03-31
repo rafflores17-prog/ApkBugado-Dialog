@@ -2,128 +2,159 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>ApkBugado</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApkBugado Dialog</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 <style>
-body {
-    margin: 0;
-    background: #000;
-    font-family: 'Orbitron', monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+    body {
+        margin: 0;
+        background: rgba(0, 0, 0, 0.7); 
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
 
-.box {
-    background: linear-gradient(145deg, #0a0a0a, #111);
-    border: 2px solid #00ff00;
-    border-radius: 20px;
-    padding: 30px;
-    width: 90%;
-    max-width: 360px;
-    text-align: center;
-    box-shadow: 0 0 30px #00ff00;
-    transition: transform 0.3s, opacity 0.3s;
-}
-
-.box:hover {
-    transform: scale(1.02);
-}
-
-h2 {
-    color: #00ff00;
-    margin-bottom: 15px;
-    font-size: 24px;
-}
-
-p {
-    color: #00ff00;
-    font-size: 15px;
-    margin-bottom: 20px;
-}
-
-button {
-    margin-top: 12px;
-    padding: 14px;
-    width: 100%;
-    border-radius: 12px;
-    border: none;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-button:hover {
-    opacity: 0.85;
-    transform: scale(1.02);
-}
-
-.telegram {
-    background: #00ff00;
-    color: #000;
-}
-
-.vip {
-    background: #ff0000;
-    color: #fff;
-}
-
-.fechar {
-    background: #000;
-    color: #00ff00;
-    border: 1px solid #00ff00;
-}
-
-@media (max-width: 350px) {
-    .box {
+    .dialog-container {
+        background-color: #0f0f1b; /* Fundo Roxo Escuro quase preto */
+        border: 2px solid #6a00ff; /* Borda Roxa */
+        border-radius: 20px;
+        width: 88%;
+        max-width: 350px;
         padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 0 0 30px rgba(106, 0, 255, 0.3);
     }
-    h2 {
-        font-size: 20px;
+
+    .header-banner {
+        background: linear-gradient(135deg, #6a00ff, #00d4ff); /* Degradê Roxo para Azul */
+        border-radius: 15px;
+        padding: 15px;
+        text-align: center;
+        color: #fff;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
     }
-    p {
-        font-size: 13px;
+
+    .header-banner h1 {
+        margin: 0;
+        font-size: 22px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     }
-    button {
-        font-size: 13px;
-        padding: 12px;
+
+    .header-banner p {
+        margin: 5px 0 0 0;
+        font-size: 11px;
+        font-weight: 400;
+        opacity: 0.9;
     }
-}
+
+    .message-box {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(0, 212, 255, 0.3);
+        border-radius: 12px;
+        padding: 18px;
+        text-align: center;
+        color: #e0e0e0;
+        font-size: 14px;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    .button-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        font-family: 'Montserrat', sans-serif;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        font-weight: 800;
+        font-size: 14px;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: all 0.1s;
+        position: relative;
+    }
+
+    /* Botão Telegram - Azul */
+    .btn-telegram {
+        background-color: #00d4ff;
+        color: #000;
+        box-shadow: 0 5px 0 #008eb3;
+    }
+    .btn-telegram:active {
+        transform: translateY(5px);
+        box-shadow: 0 0px 0 #008eb3;
+    }
+
+    /* Botão VIP - Roxo */
+    .btn-vip {
+        background-color: #6a00ff;
+        color: #fff;
+        box-shadow: 0 5px 0 #4500a6;
+    }
+    .btn-vip:active {
+        transform: translateY(5px);
+        box-shadow: 0 0px 0 #4500a6;
+    }
+
+    /* Botão Fechar - Escuro */
+    .btn-fechar {
+        background-color: #1a1a2e;
+        color: #00d4ff;
+        border: 1px solid #00d4ff;
+        box-shadow: 0 5px 0 #000;
+        margin-top: 5px;
+    }
+    .btn-fechar:active {
+        transform: translateY(5px);
+        box-shadow: 0 0px 0 #000;
+    }
+
 </style>
 </head>
-
 <body>
 
-<div class="box" id="dialogBox">
-    <h2>ApkBugado</h2>
+<div class="dialog-container" id="dialogBox">
+    <div class="header-banner">
+        <h1>APKBUGADO</h1>
+        <p>A ELITE DOS MODS</p>
+    </div>
 
-    <p>
-        Nos visite para mais aplicativos MOD e acessos premium atualizados regularmente.
-    </p>
+    <div class="message-box">
+        Nos visite para mais aplicativos mod e acessos premium atualizados regularmente. Junte-se ao nosso canal no Telegram.
+    </div>
 
-    <button class="telegram" onclick="abrirTelegram()">Canal Telegram</button>
-    <button class="vip" onclick="abrirVip()">PAINEL VIP</button>
-    <button class="fechar" onclick="fechar()">Fechar</button>
+    <div class="button-stack">
+        <button class="btn btn-telegram" onclick="abrirTelegram()">GRUPO TELEGRAM</button>
+        <button class="btn btn-vip" onclick="abrirVip()">PAINEL VIP</button>
+        <button class="btn btn-fechar" onclick="fecharDialog()">FECHAR</button>
+    </div>
 </div>
 
 <script>
-function abrirTelegram() {
-    window.location.href = "https://t.me/ApkBugado";
-}
+    function abrirTelegram() {
+        window.location.href = "https://t.me/ApkBugado";
+    }
 
-function abrirVip() {
-    window.location.href = "https://painel-vip-nine.vercel.app/";
-}
+    function abrirVip() {
+        window.location.href = "https://painel-vip-nine.vercel.app/";
+    }
 
-function fechar() {
-    const box = document.getElementById('dialogBox');
-    box.style.opacity = '0';
-    setTimeout(() => {
-        box.style.display = 'none';
-    }, 300);
-}
+    function fecharDialog() {
+        const box = document.getElementById('dialogBox');
+        box.style.opacity = '0';
+        setTimeout(() => {
+            box.style.display = 'none';
+        }, 300);
+    }
 </script>
 
 </body>
